@@ -15,15 +15,16 @@ class SorterTest {
     int ran2;
     int ran3;
     ArrayList<Player> players;
+
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
         sort = new Sorter();
         random = new Random();
 
         players = new ArrayList<>();
-        players.add(new Player("Aleks","Something","OSI","Norway","2nd Dan"));
-        players.add(new Player("Helene","Is","OSI","Norway","3rd Dan"));
-        //players.add(new Player("Alice","sdads","OSI","Norway","3rd Dan"));
+        players.add(new Player("Aleks","Bako","OSI","Norway","2nd Dan"));
+        players.add(new Player("Helene","Martinsen","OSI","Norway","3rd Dan"));
+        players.add(new Player("Alice","Powell","OSI","Norway","3rd Dan"));
 
     }
 

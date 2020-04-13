@@ -362,6 +362,7 @@ public class Sorter {
 
 
     public boolean AllOppoenntsHaveDifferentDojo(ArrayList<Player> players,Player player){
+        int blankcounter = 0;
         if(hasPlayerFromSameDojo(player)){
             return false;
         }
@@ -370,7 +371,13 @@ public class Sorter {
                 if (players.get(i).getClub().equals(players.get(j).getClub()) && !players.get(i).equals(players.get(j))) {
                     return false;
                 }
+                if(players.get(i).getFirstName().equals("Blank")){
+                    blankcounter++;
+                }
             }
+        }
+        if(blankcounter == 2){
+            return false;
         }
         return true;
     }
