@@ -1,4 +1,4 @@
-package Tests;
+import org.mockito.Mockito.*;
 
 import sample.Player;
 import sample.Sorter;
@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class SorterTest {
     Sorter sort;
@@ -20,8 +22,7 @@ class SorterTest {
     void setUp() {
         sort = new Sorter();
         random = new Random();
-
-        players = new ArrayList<>();
+        players = new ArrayList<Player>();
         players.add(new Player("Aleks","Bako","OSI","Norway","2nd Dan"));
         players.add(new Player("Helene","Martinsen","OSI","Norway","3rd Dan"));
         players.add(new Player("Alice","Powell","OSI","Norway","3rd Dan"));
@@ -39,7 +40,7 @@ class SorterTest {
 
     @org.junit.jupiter.api.Test
     void SortWithPeopleFromDifferentCountries() {
-        ArrayList<Player> Empty = new ArrayList<>();
+        ArrayList<Player> Empty = new ArrayList<Player>();
         players.add(new Player("Claire","Going","Fumetsu","Netherlands","1st Dan"));
         players.add(new Player("Mike","Osazn","Den Haag","Netherlands","4th dan"));
         players.add(new Player("Dav","Oazascsn","Ddsawsawxzaag","USA","4th dan"));
@@ -55,8 +56,8 @@ class SorterTest {
     }
     @org.junit.jupiter.api.Test
     void SortWithSameCountry() {
-        ArrayList<Player> Empty = new ArrayList<>();
-        ArrayList<Player> players = new ArrayList<>();
+        ArrayList<Player> Empty = new ArrayList<Player>();
+        ArrayList<Player> players = new ArrayList<Player>();
 
         players.add(new Player("Marianne","Iwadsxsads","OSI","Norway","3rd Dan"));
         players.add(new Player("Linda","sdadadwsadds","OSI","Norway","3rd Dan"));
@@ -74,7 +75,7 @@ class SorterTest {
 
     @org.junit.jupiter.api.Test
     void clubSortDifferentDojos() {
-        ArrayList<Player> Empty = new ArrayList<>();
+        ArrayList<Player> Empty = new ArrayList<Player>();
         players.add(new Player("csae","Going","Fumetsu","Netherlands","1st Dan"));
         players.add(new Player("Dav","Oazascsn","Ddsawsawxzaag","USA","4th dan"));
         players.add(new Player("Sand","Ossaxzawsn","Dzxen Hdsadsad","Sweden","4th dan"));
@@ -101,7 +102,7 @@ class SorterTest {
 
     @org.junit.jupiter.api.Test
     void clubSortSameDojos() {
-        ArrayList<Player> Empty = new ArrayList<>();
+        ArrayList<Player> Empty = new ArrayList<Player>();
 
         ran1 = random.nextInt(players.size());
         ran2 = random.nextInt(players.size());

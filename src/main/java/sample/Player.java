@@ -13,6 +13,9 @@ public class Player {
     String Grade;
     ArrayList<Player> Opponents;
 
+    public Player(){
+
+    }
 
     /**
      * Initialize Player Object.
@@ -22,10 +25,6 @@ public class Player {
      * @param Country = The name of the country the player is from.
      * @param Grade = The grade of the player, kyu or dan.
      */
-
-    public Player(){
-
-    }
 
     public Player(String FirstName, String Lastname, String Club, String Country, String Grade) {
     this.FirstName = FirstName;

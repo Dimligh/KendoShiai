@@ -42,10 +42,12 @@ public class FXMLController extends Pane implements Initializable {
             SortData(text[i], players.get(0));
             i++;
             for(int y = 0; i<players.get(0).getOpponents().size();y++) {
-                System.out.println(y + " " + "testing");
                 SortData(text[i], players.get(0).getOpponents().get(y));
                 players.remove(players.get(0).getOpponents().get(y));
                 i++;
+                if(players.get(0).getOpponents().size() == 1){
+                    i++;
+                }
             }
             players.remove(players.get(0));
         }

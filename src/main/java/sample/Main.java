@@ -45,6 +45,7 @@ public class Main extends Application {
     ListView<String> playerList = new ListView<>();
      //ADD PLAYER BUTTON.
      Button addPlayer = new Button("Add player");
+     addPlayer.setId("Add_Player");
      addPlayer.setOnAction(e -> {
        Player player = Controller.infoinput();
        if(!closedwithoutfillingout(player)) {
@@ -61,33 +62,26 @@ public class Main extends Application {
         //GENERATE SHIAI BUTTON.
         Button generate = new Button("Generate Shiai");
         generate.setOnAction(e -> {
-            ArrayList<Player> new_playerList = GatewaySort(players);
-        try {
-           // Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-            //Custom_Controller custom_controller = new Custom_Controller();
 
-            // custom_controller.setText("Hello World!");
-           // ArrayList<Player> tempplayers = new ArrayList<>();
-            //tempplayers.add(new Player("Aleks","Bako","OSI","Norway","2nd Dan"));
-            //tempplayers.add(new Player("Helene","Martinsen","OSI","Norway","3nd Dan"));
-            //tempplayers.add(new Player("Alice","Powel","OSI","Norway","3nd Dan"));
-            //tempplayers.add(new Player("Marianne","Skiftesvik ","OSI","Norway","3nd Dan"));
-           // tempplayers.add(new Player("TJ","Nyvoll","OSI","Norway","3nd Dan"));
-           // tempplayers.get(0).getOpponents().add(tempplayers.get(3));
-           // tempplayers.get(0).getOpponents().add(tempplayers.get(2));
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/sample.fxml"));
+            if (players.size() > 0) {
+                ArrayList<Player> new_playerList = GatewaySort(players);
+                try {
 
-            FXMLController fxmlController = new FXMLController();
-            fxmlController.players = new_playerList;
-            loader.setController(fxmlController);
-            Parent root = (Parent)loader.load();
-            Pane pane = new Pane();
-            pane.getChildren().add(root);
-            primaryStage.setScene(new Scene(pane, 600, 500));
-        }
-        catch (IOException ez){
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/sample.fxml"));
+                    FXMLController fxmlController = new FXMLController();
+                    fxmlController.players = new_playerList;
+                    loader.setController(fxmlController);
 
-        }
+                    Parent root = loader.load();
+                    Pane pane = new Pane();
+                    pane.getChildren().add(root);
+
+                    primaryStage.setScene(new Scene(pane, 600, 500));
+                } catch (IOException ez) {
+
+                }
+            }
+
         });
         grid.setConstraints(generate,2,4);
 
@@ -105,7 +99,6 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-
         launch(args);
     }
 
