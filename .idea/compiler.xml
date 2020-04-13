@@ -19,8 +19,8 @@
         <module name="kendo" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="kendo" target="1.5" />
+    <bytecodeTargetLevel target="12">
+      <module name="kendo" target="12" />
     </bytecodeTargetLevel>
   </component>
 </project>

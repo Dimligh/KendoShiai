@@ -2,7 +2,6 @@ package sample;
 
 import static javafx.application.Platform.exit;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -13,17 +12,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.scene.*;
-import javafx.scene.paint.*;
-import javafx.scene.canvas.*;
 
 
 public class Main extends Application {
@@ -82,11 +75,12 @@ public class Main extends Application {
            // tempplayers.add(new Player("TJ","Nyvoll","OSI","Norway","3nd Dan"));
            // tempplayers.get(0).getOpponents().add(tempplayers.get(3));
            // tempplayers.get(0).getOpponents().add(tempplayers.get(2));
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/sample.fxml"));
+
             FXMLController fxmlController = new FXMLController();
             fxmlController.players = new_playerList;
             loader.setController(fxmlController);
-            Parent root = loader.load();
+            Parent root = (Parent)loader.load();
             Pane pane = new Pane();
             pane.getChildren().add(root);
             primaryStage.setScene(new Scene(pane, 600, 500));

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.shape.Line?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+    <children>
+        <TextField layoutX="158.0" layoutY="72.0" prefHeight="25.0" prefWidth="64.0" />
+        <TextField layoutX="158.0" layoutY="272.0" prefHeight="25.0" prefWidth="64.0" />
+        <TextField layoutX="386.0" layoutY="272.0" prefHeight="25.0" prefWidth="64.0" />
+        <TextField layoutX="386.0" layoutY="72.0" prefHeight="25.0" prefWidth="64.0" />
+        <TextField layoutX="158.0" layoutY="297.0" prefHeight="25.0" prefWidth="64.0" />
+        <TextField layoutX="386.0" layoutY="297.0" prefHeight="25.0" prefWidth="64.0" />
+        <TextField layoutX="386.0" layoutY="97.0" prefHeight="25.0" prefWidth="64.0" />
+        <TextField layoutX="158.0" layoutY="97.0" prefHeight="25.0" prefWidth="64.0" />
+        <Line endX="-59.79998779296875" endY="-1.52587890625E-5" layoutX="323.0" layoutY="97.0" startX="-100.0" />
+        <Line endX="-59.79998779296875" endY="-1.52587890625E-5" layoutX="445.0" layoutY="97.0" startX="-100.0" />
+        <Line endX="-59.79998779296875" endY="-1.52587890625E-5" layoutX="323.0" layoutY="297.0" startX="-100.0" />
+        <Line endX="-59.79998779296875" endY="-1.52587890625E-5" layoutX="445.0" layoutY="297.0" startX="-100.0" />
+        <Line endX="-42.4000244140625" endY="2.4000091552734375" layoutX="300.0" layoutY="96.0" startX="-42.4000244140625" startY="200.79998779296875" />
+        <Line endX="34.29290771484375" endY="-8.292892456054688" layoutX="310.0" layoutY="106.0" startX="34.29290771484375" startY="190.29290771484375" />
+        <Line endX="43.79290771484375" endY="26.000015258789062" layoutX="300.0" layoutY="171.0" startX="-41.9000244140625" startY="26.000015258789062" />
+        <TextField fx:id="A1" layoutX="42.0" layoutY="59.0" prefHeight="25.0" prefWidth="116.0" />
+        <TextField fx:id="A2" layoutX="42.0" layoutY="84.0" prefHeight="25.0" prefWidth="116.0" />
+        <TextField fx:id="A3" layoutX="42.0" layoutY="110.0" prefHeight="25.0" prefWidth="116.0" />
+        <TextField fx:id="B1" layoutX="450.0" layoutY="59.0" prefHeight="25.0" prefWidth="116.0" />
+        <TextField fx:id="B2" layoutX="450.0" layoutY="84.0" prefHeight="25.0" prefWidth="116.0" />
+        <TextField fx:id="B3" layoutX="450.0" layoutY="110.0" prefHeight="25.0" prefWidth="116.0" />
+        <TextField fx:id="D1" layoutX="450.0" layoutY="260.0" prefHeight="25.0" prefWidth="116.0" />
+        <TextField fx:id="D2" layoutX="450.0" layoutY="285.0" prefHeight="25.0" prefWidth="116.0" />
+        <TextField fx:id="D3" layoutX="450.0" layoutY="309.0" prefHeight="25.0" prefWidth="116.0" />
+        <TextField fx:id="C1" layoutX="42.0" layoutY="260.0" prefHeight="25.0" prefWidth="116.0" />
+        <TextField fx:id="C2" layoutX="42.0" layoutY="285.0" prefHeight="25.0" prefWidth="116.0" />
+        <TextField fx:id="C3" layoutX="42.0" layoutY="309.0" prefHeight="25.0" prefWidth="116.0" />
+    </children>
+</Pane>
