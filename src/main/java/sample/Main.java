@@ -67,16 +67,23 @@ public class Main extends Application {
                 ArrayList<Player> new_playerList = GatewaySort(players);
                 try {
 
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/sample.fxml"));
-                    FXMLController fxmlController = new FXMLController();
-                    fxmlController.players = new_playerList;
-                    loader.setController(fxmlController);
+                    FXMLLoader loader = new FXMLLoader();
+                    if(new_playerList.size() <= 16) {
+                        loader.setLocation(getClass().getResource("/fxml/Four_Pools.fxml"));
+                        Four_PoolController four_poolController = new Four_PoolController();
+                        four_poolController.players = new_playerList;
+                        //FXMLController fxmlController = new FXMLController();
+                        //fxmlController.players = new_playerList;
+                        loader.setController(four_poolController);
+                    }
+
+                    BorderPane borderPane = new BorderPane();
 
                     Parent root = loader.load();
-                    Pane pane = new Pane();
-                    pane.getChildren().add(root);
 
-                    primaryStage.setScene(new Scene(pane, 600, 500));
+                    borderPane.getChildren().add(root);
+
+                    primaryStage.setScene(new Scene(borderPane, 1280, 720));
                 } catch (IOException ez) {
 
                 }

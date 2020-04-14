@@ -57,7 +57,7 @@ class SorterTest {
     @org.junit.jupiter.api.Test
     void SortWithSameCountry() {
         ArrayList<Player> Empty = new ArrayList<Player>();
-        ArrayList<Player> players = new ArrayList<Player>();
+        //ArrayList<Player> players = new ArrayList<Player>();
 
         players.add(new Player("Marianne","Iwadsxsads","OSI","Norway","3rd Dan"));
         players.add(new Player("Linda","sdadadwsadds","OSI","Norway","3rd Dan"));
@@ -79,6 +79,10 @@ class SorterTest {
         players.add(new Player("csae","Going","Fumetsu","Netherlands","1st Dan"));
         players.add(new Player("Dav","Oazascsn","Ddsawsawxzaag","USA","4th dan"));
         players.add(new Player("Sand","Ossaxzawsn","Dzxen Hdsadsad","Sweden","4th dan"));
+        players.add(new Player("Sazazsnd","Ossaxzawwdwasn","Dzxen Hdsaddsafassad","Sweden","4th dan"));
+        players.add(new Player("Sdsaand","Ossaxzsadawsn","Dzxen Hadsasddsadsad","Sweden","4th dan"));
+        players.add(new Player("Sadsafnd","Ossaxzawsn","Dzxen Hdsadsaddsad","Sweden","4th dan"));
+        players.add(new Player("Saasdd","Ossaxzawsn","Dzxen Hddaasdsadsad","Sweden","4th dan"));
 
         ran1 = random.nextInt(players.size());
         ran2 = random.nextInt(players.size());
@@ -125,4 +129,10 @@ class SorterTest {
     @org.junit.jupiter.api.Test
     void opponentInitializer() {
     }
+
+    @org.junit.jupiter.api.Test
+    void Exceptiontester() {
+
+    }
+
 }
