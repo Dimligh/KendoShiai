@@ -27,74 +27,29 @@ public class Main extends Application {
    public void start(Stage primaryStage) throws Exception {
 
     random = new Random();
-    GridPane grid = new GridPane();
-    grid.setPadding(new Insets(10,10,10,10));
-    grid.setVgap(7);
-    grid.setHgap(9);
 
-    ArrayList<Player> players = new ArrayList<>();
-    ListView<String> playerList = new ListView<>();
-     //ADD PLAYER BUTTON.
-     Button addPlayer = new Button("Add player");
-     addPlayer.setId("Add_Player");
-     addPlayer.setOnAction(e -> {
-       Player player = Controller.infoinput();
-       if(!closedwithoutfillingout(player)) {
-              players.add(player);
-              playerList.getItems().add(player.getFirstName() + " " + player.getLastName() + " , " + player.getClub() + " , " + player.getCountry());
-          } } );
-        grid.setConstraints(addPlayer,1,2);
 
-        //REMOVE PLAYER BUTTON.
-        Button removePlayer = new Button("Remove Player");
-        removePlayer.setOnAction(event -> removeplayer(players,playerList));
-        grid.setConstraints(removePlayer,2,2);
+        //grid.setConstraints(generate,2,4);
 
-        //GENERATE SHIAI BUTTON.
-        Button generate = new Button("Generate Shiai");
-        generate.setOnAction(e -> {
-
-            if (players.size() > 0) {
-                ArrayList<Player> new_playerList = GatewaySort(players);
-                try {
-
-                    FXMLLoader loader = new FXMLLoader();
-                    if(new_playerList.size() <= 16) {
-                        loader.setLocation(getClass().getResource("/fxml/Four_Pools.fxml"));
-                        Four_PoolController four_poolController = new Four_PoolController();
-                        four_poolController.players = new_playerList;
-                        loader.setController(four_poolController);
-                    }
-
-                    else if(new_playerList.size() > 16 && new_playerList.size() <= 32) {
-                        loader.setLocation(getClass().getResource("/fxml/Eight_Pools.fxml"));
-                        Eight_PoolController eight_poolController = new Eight_PoolController();
-                        eight_poolController.players = new_playerList;
-                        loader.setController(eight_poolController);
-                    }
-
-                    BorderPane borderPane = new BorderPane();
-                    Parent root = loader.load();
-                    borderPane.getChildren().add(root);
-
-                    primaryStage.setScene(new Scene(borderPane, 1280, 720));
-                } catch (IOException ez) {
-
-                }
-            }
-
-        });
-        grid.setConstraints(generate,2,4);
-
-        grid.setConstraints(playerList,1,5);
-        grid.getChildren().addAll(addPlayer,removePlayer,playerList,generate);
+        //grid.setConstraints(playerList,1,5);
+        //grid.getChildren().addAll(addPlayer,removePlayer,playerList,generate);
         //Primary Stage Methods
+      FXMLLoader mainloader = new FXMLLoader();
+
+        mainloader.setLocation(getClass().getResource("/fxml/Main.fxml"));
+        main_controller main_controll = new main_controller();
+        main_controll.primaryStage = primaryStage;
+        mainloader.setController(main_controll);
+
+      BorderPane borderPane = new BorderPane();
+      Parent root = mainloader.load();
+      borderPane.getChildren().add(root);
         primaryStage.setTitle("Shiai");
         primaryStage.isResizable();
         primaryStage.setOnCloseRequest(e -> {
             e.consume();
             closingProgram();});
-        primaryStage.setScene(scene = new Scene(grid, 600, 500));
+        primaryStage.setScene(scene = new Scene(borderPane,800,611));
         primaryStage.show();
     }
 
@@ -110,47 +65,7 @@ public class Main extends Application {
         }
 
     }
-    private boolean closedwithoutfillingout(Player player){
-        if(player.getFirstName().equals("") || player.getLastName().equals("") || player.getClub().equals("")
-                || player.getCountry().equals("") || player.getGrade() == null){
-            return true;
-        }
-        return false;
-    }
 
-    private void removeplayer(ArrayList<Player> players, ListView<String> playerlist){
-        ObservableList<String> player = playerlist.getSelectionModel().getSelectedItems();
-        String[] name;
-       for(String m: player) {
-           name = m.split(" ");
-           for (int i = 0; i < players.size(); i++) {
-               if (players.get(i).getFirstName().equals(name[0]) && players.get(i).getLastName().equals(name[1])) {
-                   players.remove(i);
-                   playerlist.getItems().remove(m);
-                   break;
-               }
-           }
-           break;
-       }
 
-    }
-    @FXML
-    private ArrayList<Player> GatewaySort(ArrayList<Player> players) {
-        ArrayList<Player> Empty = new ArrayList<>();
-        sort = new Sorter();
-        //Randomize values to be used in CountrySort.
-        int ran1 = random.nextInt(players.size());
-        int ran2 = random.nextInt(players.size());
-        int ran3 = random.nextInt(players.size());
-
-        //work a bit more and then move on to club sort!
-        ArrayList<Player> temp = sort.CountrySort(players,ran1,
-               ran2,ran3,Empty);
-        //re-randomize for new values for ClubSort.
-
-        Empty = sort.ClubSort(temp);
-
-        return Empty;
-    }
 }
 

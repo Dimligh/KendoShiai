@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="611.0" prefWidth="800.0" styleClass="root" stylesheets="@../StyleSheet/mainstyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <AnchorPane prefHeight="611.0" prefWidth="800.0" styleClass="root" stylesheets="@../StyleSheet/mainstyle.css">
+         <children>
+            <JFXButton id="Add_Player" fx:id="add_player" layoutX="338.0" layoutY="46.0" prefHeight="50.0" prefWidth="163.0" stylesheets="@../StyleSheet/mainstyle.css" text="Add Player" AnchorPane.rightAnchor="99.6" AnchorPane.topAnchor="46.0">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton id="Remove_Player" fx:id="remove_player" layoutX="338.0" layoutY="128.0" prefHeight="46.0" prefWidth="162.0" text="Remove Player" AnchorPane.rightAnchor="99.6" AnchorPane.topAnchor="128.0">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton id="Generate_Shiai" fx:id="generate_shiai" layoutX="336.0" layoutY="228.0" prefHeight="118.0" prefWidth="168.0" stylesheets="@../StyleSheet/mainstyle.css" text="Generate Shiai" textOverrun="CLIP" AnchorPane.bottomAnchor="54.6" AnchorPane.rightAnchor="99.6">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXListView fx:id="list_view" layoutX="14.0" layoutY="10.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="386.0" AnchorPane.topAnchor="20.0" />
+         </children>
+         <cursor>
+            <Cursor fx:constant="SW_RESIZE" />
+         </cursor>
+      </AnchorPane>
+   </center>
+</BorderPane>

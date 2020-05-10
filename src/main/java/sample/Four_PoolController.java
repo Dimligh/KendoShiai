@@ -51,7 +51,9 @@ public class Four_PoolController extends Pane implements Initializable {
     }
 
     public void SortData(TextField TextF , Player player){
-        TextF.setText(player.getFirstName() + " " + player.getLastName());
-        TextF.editableProperty().setValue(false);
+        if(!player.getFirstName().equals("Blank")) {
+            TextF.setText(player.getFirstName() + " " + player.getLastName());
+            TextF.editableProperty().setValue(false);
+        }
     }
 }

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Eight_PoolController extends Pane implements Initializable {
-    ArrayList<Player> players;
+    public ArrayList<Player> players;
     public TextField A1;
     public TextField A2;
     public TextField A3;

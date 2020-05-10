@@ -1,0 +1,13 @@
+.root{
+    -fx-background-color: lightcoral;
+
+}
+
+.button{
+    -fx-background-color: darkgray;
+    -fx-font-style: italic;
+    -fx-border-color: slategray;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-border-width: 2;
+}
