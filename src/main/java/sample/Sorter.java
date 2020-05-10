@@ -7,22 +7,22 @@ import java.util.Random;
  * All sorting algorithm object.
  */
 public class Sorter {
-
+    Random random;
     public Sorter() {
-
+        random = new Random();
     }
 
     /**
      *
      * @param players = the list of players provided.
-     * @param random_1 = rando, number 1.
+     * @param random_1 = random, number 1.
      * @param random_2 = random number 2.
      * @param random_3 = random number 3.
      * @param new_players = list of all players with opponents sorted.
      * @return list of players with opponents sorted by country.
      */
     public ArrayList<Player> CountrySort(ArrayList<Player> players, int random_1, int random_2, int random_3, ArrayList<Player> new_players) {
-        Random random = new Random();
+
         boolean checked = false;
         //loop through to until you get no equal random numbers.
         while(random_1 == random_2 || random_1== random_3 || random_2 == random_3){
@@ -30,9 +30,19 @@ public class Sorter {
             if(players.size() < 3){
                 break;
             }
+            if(random_1 != random_2 && random_1!= random_3 && random_2 != random_3){
+                break;
+            }
             random_1 = random.nextInt(players.size());
             random_2 = random.nextInt(players.size());
             random_3 = random.nextInt(players.size());
+            if((random_1 == random_2 || random_1 == random_3) &&  random_1+1 < players.size()){
+                random_1++;
+            }
+            if((random_2 == random_1 || random_2 == random_3) &&  random_2+1 < players.size()){
+                random_2++;
+            }
+
         }
         //just add the the player with no opponents and remove from old list.
         if(players.size() == 1){
@@ -74,6 +84,7 @@ public class Sorter {
         //recursion.
          return CountrySort(players,random_1,random_2,random_3,new_players);
     }
+
 
     /**
      * Sort players from different countries.
@@ -214,74 +225,28 @@ public class Sorter {
     /**
      * Sorts player opponents according to club so everyone is from a different club.
      * @param players = list of players.
-     * @param random_1 = random number 1.
-     * @param random_2 = random number 2.
-     * @param new_players = already sorted list of players.
      * @return new players when its completely sorted.
      */
-    public ArrayList<Player> ClubSort(ArrayList<Player> players, int random_1, int random_2, ArrayList<Player> new_players) {
-        Random random = new Random();
-        if(players.size() > 2) {
-            while (random_1 == random_2) {
-                //less elements means there will be equal values always.
-                random_1 = random.nextInt(players.size());
-                random_2 = random.nextInt(players.size());
-
-            }
-        }
-        //base case
-        if(players.size() == 0){
-            return new_players;
-        }
-        boolean check = false;
-        if(hasDifferentDojos(players)){
-            ClubSorter(players,random_1,random_2,new_players);
-            check = true;
-        }
-        if(!check && !hasDifferentDojos(players)) {
-            for(int i = players.size()-1; i>=0;i--){
-                new_players.add(players.get(i));
-                players.remove(i);
-            }
-        }
-        //re-randomize before recursivly calling
-        if(players.size()>=2) {
-            random_1 = random.nextInt(players.size());
-            random_2 = random.nextInt(players.size());
-        }
-
-        //recursion.
-
-        return ClubSort(players,random_1,random_2,new_players);
-    }
-
-    /**
-     *
-     * @param players
-     * @param random_1
-     * @param random_2
-     * @param new_players
-     */
-    private void ClubSorter(ArrayList<Player> players, int random_1, int random_2,ArrayList<Player> new_players){
-        //checks if player has opponents from the same dojo for both players, and if the players are from different dojos.
-        if(hasPlayerFromSameDojo(players.get(random_1)) && hasPlayerFromSameDojo(players.get(random_2))
-        && !players.get(random_1).getClub().equals(players.get(random_2).getClub())){
-            changePlayers(players.get(random_1),players.get(random_2));
-        }
-
-        //if there doesn't exist a player from the same dojo in his opponents list then remove player and add to new list.
-            if(AllOppoenntsHaveDifferentDojo(players.get(random_1).getOpponents(),players.get(random_1))){
-                new_players.add(players.get(random_1));
-                players.remove(random_1);
-                if(random_2 > 0){
-                    random_2--;
+    public ArrayList<Player> ClubSort(ArrayList<Player> players) {
+        for(int i = 0; i< players.size();i++){
+            int y = 0;
+            while(hasPlayerFromSameDojo(players.get(i))){
+                if(y == players.size()){
+                    break;
                 }
+                if(hasPlayerFromSameDojo(players.get(y)) && !players.get(i).getClub().equals(players.get(y).getClub())
+                        && !players.get(i).getOpponents().contains(players.get(y)) ){
+                    changePlayers(players.get(i),players.get(y));
+                }
+
+                y++;
+
             }
-        if(AllOppoenntsHaveDifferentDojo(players.get(random_2).getOpponents(),players.get(random_2))){
-            new_players.add(players.get(random_2));
-            players.remove(random_2);
         }
+        return players;
     }
+
+
 
 
     /**
@@ -382,6 +347,7 @@ public class Sorter {
         return true;
     }
 
+
     private void changePlayers(Player player1, Player player2){
         Player temp1 = null;
         Player temp2 = null;
@@ -399,6 +365,8 @@ public class Sorter {
             if(temp1.getOpponents().get(i).equals(player1)){
                 temp1.getOpponents().set(i,temp2);
             }
+        }
+        for(int i = 0; i< temp2.getOpponents().size();i++){
             if(temp2.getOpponents().get(i).equals(player2)){
                 temp2.getOpponents().set(i,temp1);
             }

@@ -32,15 +32,6 @@ public class Main extends Application {
     grid.setVgap(7);
     grid.setHgap(9);
 
-    //Password label
-    // Label password = new Label("Password");
-    //grid.setConstraints(password,1,1);
-
-
-    //Password input
-    //TextField passtextfield = new TextField();
-    //passtextfield.setPromptText("password");
-    //grid.setConstraints(passtextfield,1,2);
     ArrayList<Player> players = new ArrayList<>();
     ListView<String> playerList = new ListView<>();
      //ADD PLAYER BUTTON.
@@ -72,15 +63,18 @@ public class Main extends Application {
                         loader.setLocation(getClass().getResource("/fxml/Four_Pools.fxml"));
                         Four_PoolController four_poolController = new Four_PoolController();
                         four_poolController.players = new_playerList;
-                        //FXMLController fxmlController = new FXMLController();
-                        //fxmlController.players = new_playerList;
                         loader.setController(four_poolController);
                     }
 
+                    else if(new_playerList.size() > 16 && new_playerList.size() <= 32) {
+                        loader.setLocation(getClass().getResource("/fxml/Eight_Pools.fxml"));
+                        Eight_PoolController eight_poolController = new Eight_PoolController();
+                        eight_poolController.players = new_playerList;
+                        loader.setController(eight_poolController);
+                    }
+
                     BorderPane borderPane = new BorderPane();
-
                     Parent root = loader.load();
-
                     borderPane.getChildren().add(root);
 
                     primaryStage.setScene(new Scene(borderPane, 1280, 720));
@@ -94,7 +88,7 @@ public class Main extends Application {
 
         grid.setConstraints(playerList,1,5);
         grid.getChildren().addAll(addPlayer,removePlayer,playerList,generate);
-        //primary stage methods
+        //Primary Stage Methods
         primaryStage.setTitle("Shiai");
         primaryStage.isResizable();
         primaryStage.setOnCloseRequest(e -> {
@@ -118,7 +112,7 @@ public class Main extends Application {
     }
     private boolean closedwithoutfillingout(Player player){
         if(player.getFirstName().equals("") || player.getLastName().equals("") || player.getClub().equals("")
-                || player.getCountry().equals("")|| player.getGrade() == null){
+                || player.getCountry().equals("") || player.getGrade() == null){
             return true;
         }
         return false;
@@ -141,7 +135,7 @@ public class Main extends Application {
 
     }
     @FXML
-    private ArrayList<Player> GatewaySort(ArrayList<Player> players){
+    private ArrayList<Player> GatewaySort(ArrayList<Player> players) {
         ArrayList<Player> Empty = new ArrayList<>();
         sort = new Sorter();
         //Randomize values to be used in CountrySort.
@@ -153,14 +147,9 @@ public class Main extends Application {
         ArrayList<Player> temp = sort.CountrySort(players,ran1,
                ran2,ran3,Empty);
         //re-randomize for new values for ClubSort.
-        ran1 = random.nextInt(temp.size());
-        ran2 = random.nextInt(temp.size());
-        try {
-            Empty = sort.ClubSort(temp, ran1, ran2, new ArrayList<Player>());
-        }
-        catch (StackOverflowError e){
-           System.out.println("error");
-        }
+
+        Empty = sort.ClubSort(temp);
+
         return Empty;
     }
 }
